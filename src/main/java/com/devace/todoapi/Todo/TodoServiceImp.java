@@ -1,6 +1,5 @@
 package com.devace.todoapi.Todo;
 
-import com.devace.todoapi.exception.TodoNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +17,7 @@ public class TodoServiceImp implements TodoService {
 
     @Override
     public Todo getTodo(Integer id) {
-        return todoRepository.findById(id).orElseThrow(() -> new TodoNotFoundException("TODO", "id", String.valueOf(id)));
+        return todoRepository.findById(id).orElseThrow(() -> new RuntimeException("TODO not found"));
     }
 
     @Override
